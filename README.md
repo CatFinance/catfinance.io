@@ -21,4 +21,6 @@ Código Aberto: Todo o código-fonte do CatFinance está disponível no GitHub c
 
 CatFinance se destaca como uma opção atraente para investidores e entusiastas de memecoins, oferecendo uma abordagem inovadora, baixa supply, mecanismos de queima e emissão automática de tokens, taxa de compensação e transações eficientes em BNB. 
 
-Seu compromisso com o código aberto e a colaboração da comunidade promove transparência e confiança no projeto, garantindo que o valor do token seja mantido e que o supply não chegue a zero.Assim, explicamos como a taxa de compensação contribui para a estabilidade do token, assegurando que seu valor não caia, mas sim surja, mesmo com a queima contínua.
+Seu compromisso com o código aberto e a colaboração da comunidade promove transparência e confiança no projeto, garantindo que o valor do token seja mantido e que o supply não chegue a zero.
+
+Assim, explicamos como a taxa de compensação contribui para a estabilidade do token, assegurando que seu valor não caia, mas sim surja, mesmo com a queima contínua.
