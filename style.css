@@ -1,4 +1,19 @@
- .roadmap-item {
+.dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background-color: #4CAF50; /* Verde */
+        border-radius: 50%;
+        margin-right: 5px; /* Espaçamento entre a bolinha e o texto */
+        vertical-align: middle;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Brilho suave */
+    }
+    
+    .small-text {
+        font-size: 0.8em; /* Tamanho do texto igual ao tamanho da bolinha */
+        color: #4CAF50; /* Verde */
+    }
+.roadmap-item {
             border: 2px solid #ff69b4; /* Cor da borda */
             border-radius: 5px;
             padding: 20px;
