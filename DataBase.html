@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataStorage DApp</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <h1>DataStorage DApp</h1>
+
+<h2>Adicionar Dados</h2>
+<label for="addKey">Senha para Acessar Dados:</label>
+<input type="text" id="addKey"><br>
+<label for="addValue">Dado a ser Adicionado:</label>
+<input type="text" id="addValue"><br>
+<button onclick="addData()">Adicionar Dados</button><br><br>
+
+<h2>Recuperar Dados</h2>
+<label for="retrieveKey">Senha para Acessar Dados:</label>
+<input type="text" id="retrieveKey"><br>
+<button onclick="getData()">Obter Dados</button>
+
+<div id="output"></div>
+
+
+	<script>
+		// Conectar ao contrato inteligente
+const contractAddress = '0x390d5F06824C4511190bb021aCA4177c71450197'; // Coloque o endereço do seu contrato aqui
+const abi = [
+{
+	"inputs": [
+		{
+			"internalType": "string",
+			"name": "key",
+			"type": "string"
+		},
+		{
+			"internalType": "string",
+			"name": "value",
+			"type": "string"
+		}
+	],
+	"name": "addData",
+	"outputs": [],
+	"stateMutability": "nonpayable",
+	"type": "function"
+},
+{
+	"inputs": [
+		{
+			"internalType": "string",
+			"name": "key",
+			"type": "string"
+		}
+	],
+	"name": "getData",
+	"outputs": [
+		{
+			"internalType": "string",
+			"name": "",
+			"type": "string"
+		}
+	],
+	"stateMutability": "view",
+	"type": "function"
+}
+]; // Coloque o ABI do seu contrato aqui
+const web3 = new Web3(Web3.givenProvider || 'http://localhost:8545'); // Conectar ao provedor web3
+const contract = new web3.eth.Contract(abi, contractAddress); // Criar uma instância do contrato
+
+// Função para adicionar dados ao contrato
+async function addData() {
+    const key = document.getElementById('addKey').value;
+    const value = document.getElementById('addValue').value;
+    
+    // Enviar transação para adicionar dados
+    await contract.methods.addData(key, value).send({ from: web3.eth.defaultAccount }); // Usar conta padrão do web3
+    document.getElementById('output').innerText = 'Dados Adicionados com Sucesso.';
+}
+
+// Função para recuperar dados do contrato
+async function getData() {
+    const key = document.getElementById('retrieveKey').value;
+    
+    // Chamar método para recuperar dados
+    const result = await contract.methods.getData(key).call();
+    
+    if (result === "") {
+        document.getElementById('output').innerText = 'Nenhum dado relacionado à senha fornecida';
+    } else {
+        document.getElementById('output').innerText = 'Dado Protegido pela Senha:\n' + result;
+    }
+}
+
+// Verificar se a janela está carregada
+window.onload = async function() {
+    // Definir conta padrão para transações
+    const accounts = await web3.eth.getAccounts();
+    web3.eth.defaultAccount = accounts[0];
+}
+
+	</script>
+</body>
+</html>
