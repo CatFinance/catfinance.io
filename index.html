@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CatFinance - A MemeCoin com uma Abordagem Inovadora</title>
     <link rel="stylesheet" href="style.css">
+ 
 </head>
 <body>
     <header>
@@ -12,7 +13,7 @@
             <h1>Cat Finance</h1>
             <p>Transformando a maneira como você interage com as memecoins.</p>
             <div class="buttons-container">
-                <button class="swap-button"><a href="" target="_blank">Swap</a></button>
+                <button class="swap-button" onclick="showAlert()"><a href="" target="_blank">Swap</a></button>
                 <button class="data-system-button"><a href="CatDataBase.html" target="_blank">Cat Database</a></button>
             </div>
         </div>
@@ -66,7 +67,11 @@
             <p>Código Aberto: Todo o código-fonte do CatFinance está disponível no GitHub como código aberto, permitindo que a comunidade examine, contribua e audite o código para garantir transparência e segurança.</p>
         </div>
     </section>
-
+   <script>
+        function showAlert() {
+            alert("Você clicou no botão para emitir um alerta!");
+        }
+   </script>
     <footer>
         <div class="container">
             <p>&copy; 2024 Cat Finance. Todos os direitos reservados.</p>
