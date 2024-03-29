@@ -127,4 +127,10 @@
                 footer p {
                     margin: 0;
                 }
-                
+
+                .data-system-button{
+                    color:white;
+                 }
+                .swap-button{
+                    color:white;
+                }
