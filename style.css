@@ -1,5 +1,24 @@
+        
+.roadmap-item {
+    border: 2px solid #ff69b4; /* Cor da borda */
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
 
-      a{
+.roadmap-item.completed {
+    background-color: #fff; /* Cor de fundo para itens concluídos */
+}
+
+.roadmap-item.upcoming {
+    opacity: 0.7; /* Opacidade reduzida para itens futuros */
+}
+
+        a{
             text-decoration: none;
             color: #333;
         }
@@ -95,4 +114,4 @@
             margin: 0;
         }
         
- 
+        
