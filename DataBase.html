@@ -6,26 +6,135 @@
     <title>DataStorage DApp</title>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
     <script src="app.js"></script>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f0fc; /* Rosa claro */
+            color: #333; /* Cor do texto */
+            text-align: center; /* Centralizar conteúdo */
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff; /* Fundo branco */
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
+
+        h1 {
+            color: #ff69b4; /* Rosa mais claro */
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #ff69b4; /* Rosa mais claro */
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc; /* Cinza claro */
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #ff69b4; /* Rosa mais claro */
+            color: #fff; /* Letras brancas */
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #ff8acc; /* Rosa mais claro (hover) */
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8f0fc; /* Rosa claro */
+            max-height: 200px; /* Altura máxima da div */
+            overflow: auto; /* Adiciona barra de rolagem quando necessário */
+        }
+		#status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            background-color: #f8badd;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
-<body>
-    <h1>DataStorage DApp</h1>
+<body><br><br>
+    <div class="container">
+		<div id="status">Conectando...</div>
+        <h1>Cat DataStorage</h1>
 
-<h2>Adicionar Dados</h2>
-<label for="addKey">Senha para Acessar Dados:</label>
-<input type="text" id="addKey"><br>
-<label for="addValue">Dado a ser Adicionado:</label>
-<input type="text" id="addValue"><br>
-<button onclick="addData()">Adicionar Dados</button><br><br>
+        <h2>Adicionar Dados</h2>
+        <label for="addKey">Senha para Acessar Dados:</label>
+        <input type="text" id="addKey"><br>
+        <label for="addValue">Dado a ser Adicionado:</label>
+        <input type="text" id="addValue"><br>
+        <button onclick="addData()">Adicionar Dados</button><br><br>
 
-<h2>Recuperar Dados</h2>
-<label for="retrieveKey">Senha para Acessar Dados:</label>
-<input type="text" id="retrieveKey"><br>
-<button onclick="getData()">Obter Dados</button>
+        <h2>Recuperar Dados</h2>
+        <label for="retrieveKey">Senha para Acessar Dados:</label>
+        <input type="text" id="retrieveKey"><br>
+        <button onclick="getData()">Obter Dados</button>
 
-<div id="output"></div>
-
+        <div id="output"></div>
+    </div>
 
 	<script>
+        // Verificar se o usuário está conectado à sua carteira Ethereum
+        async function checkConnection() {
+            if (window.ethereum) {
+                window.web3 = new Web3(window.ethereum);
+                try {
+                    // Solicitar acesso à carteira
+                    await window.ethereum.enable();
+                    // Se conectado, mostrar o endereço da carteira
+                    const accounts = await window.web3.eth.getAccounts();
+                    if (accounts.length > 0) {
+                        const address = accounts[0];
+                        document.getElementById("status").innerText = address.slice(0, 6) + "..." + address.slice(-5);
+                    } else {
+                        document.getElementById("status").innerText = "Não conectado";
+                    }
+                } catch (error) {
+                    console.error(error);
+                    document.getElementById("status").innerText = "Falha na conexão";
+                }
+            } else {
+                document.getElementById("status").innerText = "Metamask não detectado";
+            }
+        }
+
+        checkConnection();
+    </script>
+
+	<script>
+
+
+
 		// Conectar ao contrato inteligente
 const contractAddress = '0x390d5F06824C4511190bb021aCA4177c71450197'; // Coloque o endereço do seu contrato aqui
 const abi = [
@@ -90,7 +199,7 @@ async function getData() {
     if (result === "") {
         document.getElementById('output').innerText = 'Nenhum dado relacionado à senha fornecida';
     } else {
-        document.getElementById('output').innerText = 'Dado Protegido pela Senha:\n' + result;
+        document.getElementById('output').innerText = 'Dado Protegido pela Senha:\n\n' + result;
     }
 }
 
