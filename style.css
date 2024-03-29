@@ -1,0 +1,98 @@
+
+      a{
+            text-decoration: none;
+            color: #333;
+        }
+        header{
+           
+        }
+        section{
+            margin-top: -40px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f0fc; /* Rosa claro */
+            color: #333; /* Cor do texto */
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #ffd7e8; /* Rosa mais claro */
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        header h1 {
+            margin: 0;
+            color: #ff69b4; /* Rosa mais claro */
+            font-size: 36px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav{
+            margin-top: 10px;
+        }
+        nav ul li a {
+            color: inherit; /* Cor padrão do texto */
+            text-decoration: none;
+            font-size: 18px;
+        }
+        
+        .buttons-container {
+            margin-top: 20px; /* Espaço entre o banner e os botões */
+        }
+        
+        .buttons-container button {
+            background-color: #ff69b4; /* Rosa mais claro */
+            color: #fff; /* Letras brancas */
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+        
+        .buttons-container button:hover {
+            background-color: #ff8acc; /* Rosa mais claro (hover) */
+        }
+        
+        section {
+            padding: 0px 0; /* Reduzido o espaçamento entre as seções */
+            text-align: justify;
+        }
+        
+        section h2 {
+            color: #ff69b4; /* Rosa mais claro */
+        }
+        
+        footer {
+            background-color: #fff; /* Fundo branco */
+            color: #ff69b4; /* Letras rosa claro */
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin: 0;
+        }
+        
+ 
